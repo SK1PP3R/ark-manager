@@ -28,15 +28,14 @@ if [ ! -f "/ark/GameUserSettings.ini" ]; then
   ln -s /ark/server/ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini /ark/GameUserSettings.ini >/dev/null 2>&1
 fi
 
-
 function show_loading() {
-  echo -n "Server wird installiert "
+  echo -n "Loading "
   while true; do
     for ((i=0; i<$1; i++)); do
       echo -n "."
       sleep 1
     done
-    echo -ne "\r"
+    echo -ne "\r        \r"
   done
 }
 show_loading 3 &
