@@ -11,4 +11,4 @@ chown -R steam:steam /ark /home/steam
 #chmod u+x run.sh
 #su -p - steam -c './run.sh'
 sudo -u steam ./run.sh
-sleep 6000
+#sleep 6000
