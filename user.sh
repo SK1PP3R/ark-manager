@@ -8,7 +8,5 @@ if [ ! "$(id -g steam)" -eq "$GID" ]; then
         groupmod -o -g "$GID" steam ; 
 fi
 chown -R steam:steam /ark /home/steam
-#chmod u+x run.sh
-#su -p - steam -c './run.sh'
-sudo -Hu steam sh -c 'sh run.sh'
-#sleep 6000
+chmod -R 777 /root/
+su -p - steam -c /home/steam/run.sh
