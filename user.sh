@@ -5,9 +5,6 @@ fi
 if [ ! "$(id -g steam)" -eq "$GID" ]; then 
         groupmod -o -g "$GID" steam ; 
 fi
-chown -R steam:steam /ark/ /home/steam/
-chown -R steam:steam /ark/* /home/steam/*
-chmod -R 777 /root/
 
 if [ ! -d "/ark" ]; then
   mkdir /ark >/dev/null 2>&1
@@ -28,6 +25,9 @@ fi
 if [ ! -f "/ark/GameUserSettings.ini" ]; then
   ln -s /ark/server/ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini /ark/GameUserSettings.ini >/dev/null 2>&1
 fi
+
+chown -R steam:steam /ark/ /home/steam/
+chmod -R 777 /root/
 
 echo "Update Server...\n";
 su - steam -c 'cd /home/steam && ./steamcmd.sh +login anonymous +force_install_dir /ark/server +app_update 376030 validate +quit'
