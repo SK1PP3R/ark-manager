@@ -31,4 +31,4 @@ fi
 echo "Update Server...";
 su - steam -c 'cd /home/steam && ./steamcmd.sh +login anonymous +force_install_dir /ark/server +app_update 376030 validate +quit >/dev/null 2>&1'
 echo "Start Server...";
-su - steam -c "cd /ark/server/ShooterGame/Binaries/Linux && ./ShooterGameServer "${SERVERMAP}?listen?SessionName=${SESSIONNAME}?Port=${STEAMPORT}?bRawSockets=${STEAMPORT}?QueryPort=${PORT}?usGamePort=${PORT}?ServerAdminPassword=${ADMINPASSWORD}?GameModIds=${GAME_MOD_IDS}?MaxPlayers=${MAX_PLAYERS}?RCONEnabled=${RCON_ENABLED}?RCONPort=${RCON_PORT}?serverPVE=${DISABLE_PVP}" -server -log $(if [ ${DISABLE_BATTLEYE} -eq 1 ]; then echo "-NoBattlEye"; fi)"
+su - steam -c "cd /ark/server/ShooterGame/Binaries/Linux && ./ShooterGameServer "${SERVERMAP}?listen?SessionName=${SESSIONNAME}?Port=${STEAMPORT}?bRawSockets=${STEAMPORT}?QueryPort=${PORT}?usGamePort=${PORT}?ServerAdminPassword=${ADMINPASSWORD}?GameModIds=${GAME_MOD_IDS}?MaxPlayers=${MAX_PLAYERS}?RCONEnabled=${RCON_ENABLED}?RCONPort=${RCON_PORT}?serverPVE=${DISABLE_PVP}" -server -log $(if [ ${DISABLE_BATTLEYE} -eq 1 ]; then echo "-NoBattlEye"; fi) >/dev/null 2>&1"
