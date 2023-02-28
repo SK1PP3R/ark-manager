@@ -36,7 +36,7 @@ function show_loading() {
       echo -n "."
       sleep 1
     done
-    echo -ne "\r        \r" # Zur      ck zum Anfang der Zeile
+    echo -ne "\r"
   done
 }
 show_loading 3 &
