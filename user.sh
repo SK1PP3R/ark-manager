@@ -8,3 +8,4 @@ if [ ! "$(id -g steam)" -eq "$GID" ]; then
         groupmod -o -g "$GID" steam ; 
 fi
 chown -R steam:steam /ark /home/steam
+su -p - steam -c './run.sh'
