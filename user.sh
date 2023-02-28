@@ -34,7 +34,7 @@ echo "Start Server...";
 
 #su - steam -c "cd /ark/server/ShooterGame/Binaries/Linux && ./ShooterGameServer "${SERVERMAP}?listen?SessionName=${SESSIONNAME}?Port=${STEAMPORT}?bRawSockets=${STEAMPORT}?QueryPort=${PORT}?usGamePort=${PORT}?ServerAdminPassword=${ADMINPASSWORD}?GameModIds=${GAME_MOD_IDS}?MaxPlayers=${MAX_PLAYERS}?RCONEnabled=${RCON_ENABLED}?RCONPort=${RCON_PORT}?serverPVE=${DISABLE_PVP}" -server -log $(if [ ${DISABLE_BATTLEYE} -eq 1 ]; then echo "-NoBattlEye"; fi)"
 start="cd /ark/server/ShooterGame/Binaries/Linux && ./ShooterGameServer "${SERVERMAP}?listen?SessionName=${SESSIONNAME}?Port=${STEAMPORT}?bRawSockets=${STEAMPORT}?QueryPort=${PORT}?usGamePort=${PORT}?ServerAdminPassword=${ADMINPASSWORD}?GameModIds=${GAME_MOD_IDS}?MaxPlayers=${MAX_PLAYERS}?RCONEnabled=${RCON_ENABLED}?RCONPort=${RCON_PORT}?serverPVE=${DISABLE_PVP}" -server -log"
-if [ "${DISABLE_BATTLEYE}" = "1" ]; then
+if [ "${DISABLE_BATTLEYE}" = "True" ]; then
  echo "Start ARK without BattlEye.\n"
  su - steam -c "$start -NoBattlEye"
 else
