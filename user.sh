@@ -5,7 +5,8 @@ fi
 if [ ! "$(id -g steam)" -eq "$GID" ]; then 
         groupmod -o -g "$GID" steam ; 
 fi
-chown -R steam:steam /ark /home/steam
+chown -R steam:steam /ark/ /home/steam/
+chown -R steam:steam /ark/* /home/steam/*
 chmod -R 777 /root/
 
 if [ ! -d "/ark" ]; then
