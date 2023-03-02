@@ -30,16 +30,14 @@ chown -R steam:steam /ark/ /home/steam/
 chmod -R 777 /root/
 
 echo "Update Server...\n";
-su - steam -c 'cd /home/steam && ./steamcmd.sh +login anonymous +force_install_dir /ark/server +app_update 376030 validate +quit'
+su - steam -c 'cd /home/steam && ./steamcmd.sh +login anonymous +force_install_dir /ark/server +app_update 376030 ${UPDATEPONSTART:+validate} +quit'
 
 echo "Start Server...\n";
 
-start="cd /ark/server/ShooterGame/Binaries/Linux && ./ShooterGameServer "${SERVERMAP}?listen?SessionName=\"${SESSIONNAME}\"?Port=${STEAMPORT}?bRawSockets=${STEAMPORT}?QueryPort=${PORT}?usGamePort=${PORT}?ServerAdminPassword=\"${ADMINPASSWORD}\"?GameModIds=${GAME_MOD_IDS}?MaxPlayers=${MAX_PLAYERS}?RCONEnabled=${RCON_ENABLED}?RCONPort=${RCON_PORT}?serverPVE=${DISABLE_PVP}" -server -log"
-
 if [ "$DISABLE_BATTLEYE" = true ]; then
  echo "Start ARK without BattlEye.\n"
- su - steam -c "$start -NoBattlEye"
+ su - steam -c 'cd /ark/server/ShooterGame/Binaries/Linux && ./ShooterGameServer ${SERVERMAP}?listen?SessionName="${SESSIONNAME}"?Port=${STEAMPORT}?bRawSockets=${STEAMPORT}?QueryPort=${PORT}?usGamePort=${PORT}?ServerAdminPassword="${ADMINPASSWORD}"?GameModIds=${GAME_MOD_IDS}?MaxPlayers=${MAX_PLAYERS}?RCONEnabled=${RCON_ENABLED}?RCONPort=${RCON_PORT}?serverPVE=${DISABLE_PVP} -NoBattlEye -server -log'
 else
  echo "Start ARK with BattlEye.\n"
- su - steam -c "$start"
+ su - steam -c 'cd /ark/server/ShooterGame/Binaries/Linux && ./ShooterGameServer ${SERVERMAP}?listen?SessionName="${SESSIONNAME}"?Port=${STEAMPORT}?bRawSockets=${STEAMPORT}?QueryPort=${PORT}?usGamePort=${PORT}?ServerAdminPassword="${ADMINPASSWORD}"?GameModIds=${GAME_MOD_IDS}?MaxPlayers=${MAX_PLAYERS}?RCONEnabled=${RCON_ENABLED}?RCONPort=${RCON_PORT}?serverPVE=${DISABLE_PVP} -server -log'
 fi
