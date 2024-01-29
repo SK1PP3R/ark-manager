@@ -10,6 +10,10 @@ if [ ! -d "/ark" ]; then
   mkdir /ark >/dev/null 2>&1
 fi
 
+if [ ! -d "/mnt/server" ]; then
+  ln -s /ark /mnt/server >/dev/null 2>&1
+fi
+
 if [ ! -d "/ark/logs" ]; then
   mkdir /ark/logs >/dev/null 2>&1
 fi
