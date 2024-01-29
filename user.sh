@@ -14,6 +14,10 @@ if [ ! -d "/mnt/server" ]; then
   ln -s /ark /mnt/server >/dev/null 2>&1
 fi
 
+if [ ! -d "/home/container" ]; then
+  ln -s /ark /home/container >/dev/null 2>&1
+fi
+
 if [ ! -d "/ark/logs" ]; then
   mkdir /ark/logs >/dev/null 2>&1
 fi
